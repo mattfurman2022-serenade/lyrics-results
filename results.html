@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Personalized Lyrics</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #111;
+      color: #fff;
+    }
+
+    #spinner {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #lyrics {
+      white-space: pre-wrap;
+      margin-top: 30px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 👇 THESE ARE THE ELEMENTS I WAS TALKING ABOUT -->
+  <h1>Your Personalized Lyrics</h1>
+
+  <div id="spinner">🎵 Generating your song… please wait</div>
+
+  <pre id="lyrics"></pre>
+
+  <!-- 👆 THEY LIVE IN THE BODY -->
+
+  <script>
+    async function loadLyrics() {
+      try {
+        const response = await fetch("https://hook.us2.make.com/2gpabqd4iq5kosiiw26e6ctqanlpkcet");
+
+        if (!response.ok) {
+          throw new Error("Request failed");
+        }
+
+        const lyrics = await response.text();
+
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("lyrics").innerText = lyrics;
+
+      } catch (err) {
+        document.getElementById("spinner").innerText =
+          "Lyrics failed to load.";
+        console.error(err);
+      }
+    }
+
+    loadLyrics();
+  </script>
+
+</body>
+</html>
