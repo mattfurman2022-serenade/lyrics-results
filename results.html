@@ -41,12 +41,11 @@
   const params = new URLSearchParams(window.location.search);
   const lyrics = params.get("lyrics");
 
-  document.getElementById("spinner").style.display = "none";
-
   if (lyrics) {
+    document.getElementById("spinner").style.display = "none";
     document.getElementById("lyrics").innerText = decodeURIComponent(lyrics);
   } else {
-    document.getElementById("lyrics").innerText = "Lyrics failed to load.";
+    document.getElementById("spinner").innerText = "Lyrics failed to load.";
   }
 </script>
 
