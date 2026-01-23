@@ -37,34 +37,18 @@
 
   <!-- 👆 THEY LIVE IN THE BODY -->
 
-  <script>
-    async function loadLyrics() {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const lyrics = params.get("lyrics");
+ <script>
+  const params = new URLSearchParams(window.location.search);
+  const lyrics = params.get("lyrics");
 
-        document.getElementById("spinner").style.display = "none";
-        document.getElementById("lyrics").innerText =
-          lyrics || "Lyrics failed to load.";
+  document.getElementById("spinner").style.display = "none";
 
-        if (!response.ok) {
-          throw new Error("Request failed");
-        }
-
-        const lyrics = await response.text();
-
-        document.getElementById("spinner").style.display = "none";
-        document.getElementById("lyrics").innerText = lyrics;
-
-      } catch (err) {
-        document.getElementById("spinner").innerText =
-          "Lyrics failed to load.";
-        console.error(err);
-      }
-    }
-
-    loadLyrics();
-  </script>
+  if (lyrics) {
+    document.getElementById("lyrics").innerText = decodeURIComponent(lyrics);
+  } else {
+    document.getElementById("lyrics").innerText = "Lyrics failed to load.";
+  }
+</script>
 
 </body>
 </html>
