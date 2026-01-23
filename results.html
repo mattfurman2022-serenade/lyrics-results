@@ -40,7 +40,12 @@
   <script>
     async function loadLyrics() {
       try {
-        const response = await fetch("https://hook.us2.make.com/2gpabqd4iq5kosiiw26e6ctqanlpkcet");
+        const params = new URLSearchParams(window.location.search);
+        const lyrics = params.get("lyrics");
+
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("lyrics").innerText =
+          lyrics || "Lyrics failed to load.";
 
         if (!response.ok) {
           throw new Error("Request failed");
