@@ -61,7 +61,8 @@
           throw new Error("Request failed");
         }
 
-        const data = await response.json();
+        const text = await response.text();
+        const data = JSON.parse(text);
 
         spinner.style.display = "none";
         lyricsBox.textContent = data.lyrics;
