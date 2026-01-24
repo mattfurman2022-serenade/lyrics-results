@@ -1,11 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting…</title>
-  <meta http-equiv="refresh" content="0; url=results.html">
+  <title>Personalized Song Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 40px;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 30px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-Redirecting…
+
+<h1>Create a Personalized Song</h1>
+
+<form action="results.html" method="POST">
+  <label>
+    Who is this song for?
+    <input name="person" required>
+  </label>
+
+  <label>
+    Describe a special memory
+    <textarea name="memory" required></textarea>
+  </label>
+
+  <label>
+    What do you love most about them?
+    <textarea name="love" required></textarea>
+  </label>
+
+  <label>
+    What message should the song convey?
+    <textarea name="message" required></textarea>
+  </label>
+
+  <button type="submit">Generate Song</button>
+</form>
+
 </body>
 </html>
