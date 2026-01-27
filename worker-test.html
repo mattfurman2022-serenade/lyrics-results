@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Worker Test</title>
+</head>
+<body>
+  <h1>Worker Test</h1>
+  <button id="go">Fetch Lyrics</button>
+  <pre id="out">Waiting…</pre>
+
+  <script>
+    document.getElementById("go").onclick = async () => {
+      try {
+        const response = await fetch(
+          "https://patient-hat-3eee.mattfurman-2022.workers.dev",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              name: "Test Name",
+              memory: "a rainy night and coffee"
+            })
+          }
+        );
+
+        const text = await response.text();
+        document.getElementById("out").textContent = text;
+      } catch (e) {
+        document.getElementById("out").textContent =
+          "FAILED: " + e.toString();
+      }
+    };
+  </script>
+</body>
+</html>
