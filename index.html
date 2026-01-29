@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Personalized Song Generator</title>
+
   <style>
     body {
       background: #111;
@@ -80,21 +81,26 @@
     <button type="submit">Generate Lyrics</button>
   </form>
 
-  <!-- ✅ JAVASCRIPT (MUST BE HERE, NOT ABOVE) -->
   <script>
     const songTypeSelect = document.getElementById("songType");
-    const tributeFields = document.getElementById("tributeFields");
     const loveFields = document.getElementById("loveFields");
+    const tributeFields = document.getElementById("tributeFields");
 
-    songTypeSelect.addEventListener("change", () => {
+    function updateFields() {
       if (songTypeSelect.value === "tribute") {
-        tributeFields.classList.remove("hidden");
         loveFields.classList.add("hidden");
+        tributeFields.classList.remove("hidden");
       } else {
-        tributeFields.classList.add("hidden");
         loveFields.classList.remove("hidden");
+        tributeFields.classList.add("hidden");
       }
-    });
+    }
+
+    // Run once on page load
+    updateFields();
+
+    // Run every time selection changes
+    songTypeSelect.addEventListener("change", updateFields);
   </script>
 
 </body>
