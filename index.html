@@ -50,58 +50,58 @@
 </head>
 <body>
 
-  <h1>🎵 Personalized Song Generator</h1>
+<h1>🎵 Personalized Song Generator</h1>
 
-  <form action="results.html" method="GET">
+<form action="results.html" method="GET">
 
-    <label for="songType">Song Type</label>
-    <select id="songType" name="songType" required>
-      <option value="love">Love Song</option>
-      <option value="tribute">Tribute Song</option>
-    </select>
+  <label for="songType">Song Type</label>
+  <select id="songType" name="songType" required>
+    <option value="love" selected>Love Song</option>
+    <option value="tribute">Tribute Song</option>
+  </select>
 
-    <label for="name">Who is the song for?</label>
-    <input type="text" name="name" required />
+  <label for="name">Who is the song for?</label>
+  <input type="text" name="name" required />
 
-    <!-- LOVE SONG FIELDS -->
-    <div id="loveFields">
-      <label for="memory">Special memory you share</label>
-      <textarea name="memory"></textarea>
-    </div>
+  <!-- LOVE SONG QUESTIONS -->
+  <div id="loveFields" class="hidden">
+    <label for="memory">Special memory you share</label>
+    <textarea name="memory"></textarea>
+  </div>
 
-    <!-- TRIBUTE SONG FIELDS -->
-    <div id="tributeFields" class="hidden">
-      <label for="relationship">Your relationship to them</label>
-      <input type="text" name="relationship" />
+  <!-- TRIBUTE SONG QUESTIONS -->
+  <div id="tributeFields" class="hidden">
+    <label for="relationship">Your relationship to them</label>
+    <input type="text" name="relationship" />
 
-      <label for="legacy">What they meant to you</label>
-      <textarea name="legacy"></textarea>
-    </div>
+    <label for="legacy">What they meant to you</label>
+    <textarea name="legacy"></textarea>
+  </div>
 
-    <button type="submit">Generate Lyrics</button>
-  </form>
+  <button type="submit">Generate Lyrics</button>
+</form>
 
-  <script>
-    const songTypeSelect = document.getElementById("songType");
-    const loveFields = document.getElementById("loveFields");
-    const tributeFields = document.getElementById("tributeFields");
+<script>
+  const songType = document.getElementById("songType");
+  const loveFields = document.getElementById("loveFields");
+  const tributeFields = document.getElementById("tributeFields");
 
-    function updateFields() {
-      if (songTypeSelect.value === "tribute") {
-        loveFields.classList.add("hidden");
-        tributeFields.classList.remove("hidden");
-      } else {
-        loveFields.classList.remove("hidden");
-        tributeFields.classList.add("hidden");
-      }
+  function switchFields() {
+    if (songType.value === "tribute") {
+      loveFields.classList.add("hidden");
+      tributeFields.classList.remove("hidden");
+    } else {
+      tributeFields.classList.add("hidden");
+      loveFields.classList.remove("hidden");
     }
+  }
 
-    // Run once on page load
-    updateFields();
+  // Force correct state on load
+  switchFields();
 
-    // Run every time selection changes
-    songTypeSelect.addEventListener("change", updateFields);
-  </script>
+  // Switch when user changes selection
+  songType.addEventListener("change", switchFields);
+</script>
 
 </body>
 </html>
