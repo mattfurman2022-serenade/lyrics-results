@@ -42,10 +42,6 @@
     button:hover {
       background: #5a4cd6;
     }
-
-    .hidden {
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -54,27 +50,27 @@
 
 <form action="results.html" method="GET">
 
-  <label for="songType">Song Type</label>
-  <select id="songType" name="songType" required>
+  <label>Song Type</label>
+  <select id="songType" name="songType">
     <option value="love" selected>Love Song</option>
     <option value="tribute">Tribute Song</option>
   </select>
 
-  <label for="name">Who is the song for?</label>
+  <label>Who is the song for?</label>
   <input type="text" name="name" required />
 
-  <!-- LOVE SONG QUESTIONS -->
-  <div id="loveFields" class="hidden">
-    <label for="memory">Special memory you share</label>
+  <!-- LOVE SONG -->
+  <div id="loveFields" style="display:block;">
+    <label>Special memory you share</label>
     <textarea name="memory"></textarea>
   </div>
 
-  <!-- TRIBUTE SONG QUESTIONS -->
-  <div id="tributeFields" class="hidden">
-    <label for="relationship">Your relationship to them</label>
+  <!-- TRIBUTE SONG -->
+  <div id="tributeFields" style="display:none;">
+    <label>Your relationship to them</label>
     <input type="text" name="relationship" />
 
-    <label for="legacy">What they meant to you</label>
+    <label>What they meant to you</label>
     <textarea name="legacy"></textarea>
   </div>
 
@@ -83,24 +79,20 @@
 
 <script>
   const songType = document.getElementById("songType");
-  const loveFields = document.getElementById("loveFields");
-  const tributeFields = document.getElementById("tributeFields");
+  const love = document.getElementById("loveFields");
+  const tribute = document.getElementById("tributeFields");
 
-  function switchFields() {
+  function updateFields() {
     if (songType.value === "tribute") {
-      loveFields.classList.add("hidden");
-      tributeFields.classList.remove("hidden");
+      love.style.display = "none";
+      tribute.style.display = "block";
     } else {
-      tributeFields.classList.add("hidden");
-      loveFields.classList.remove("hidden");
+      tribute.style.display = "none";
+      love.style.display = "block";
     }
   }
 
-  // Force correct state on load
-  switchFields();
-
-  // Switch when user changes selection
-  songType.addEventListener("change", switchFields);
+  songType.addEventListener("change", updateFields);
 </script>
 
 </body>
