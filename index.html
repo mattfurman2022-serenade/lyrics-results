@@ -1,20 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>JS Test</title>
+  <meta charset="UTF-8" />
+  <title>Personalized Song Generator</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input, textarea, select, button {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      margin-top: 25px;
+      background: #6c5ce7;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #5a4cd6;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-  <h1>JS Test Page</h1>
+  <h1>🎵 Personalized Song Generator</h1>
 
-  <button id="btn">Click Me</button>
+  <form action="results.html" method="GET">
 
-  <p id="output"></p>
+    <label for="songType">Song Type</label>
+    <select id="songType" name="songType" required>
+      <option value="love">Love Song</option>
+      <option value="tribute">Tribute Song</option>
+    </select>
 
+    <label for="name">Who is the song for?</label>
+    <input type="text" name="name" required />
+
+    <!-- LOVE SONG FIELDS -->
+    <div id="loveFields">
+      <label for="memory">Special memory you share</label>
+      <textarea name="memory"></textarea>
+    </div>
+
+    <!-- TRIBUTE SONG FIELDS -->
+    <div id="tributeFields" class="hidden">
+      <label for="relationship">Your relationship to them</label>
+      <input type="text" name="relationship" />
+
+      <label for="legacy">What they meant to you</label>
+      <textarea name="legacy"></textarea>
+    </div>
+
+    <button type="submit">Generate Lyrics</button>
+  </form>
+
+  <!-- ✅ JAVASCRIPT (MUST BE HERE, NOT ABOVE) -->
   <script>
-    document.getElementById("btn").addEventListener("click", () => {
-      document.getElementById("output").innerText = "✅ JavaScript is running";
+    const songTypeSelect = document.getElementById("songType");
+    const tributeFields = document.getElementById("tributeFields");
+    const loveFields = document.getElementById("loveFields");
+
+    songTypeSelect.addEventListener("change", () => {
+      if (songTypeSelect.value === "tribute") {
+        tributeFields.classList.remove("hidden");
+        loveFields.classList.add("hidden");
+      } else {
+        tributeFields.classList.add("hidden");
+        loveFields.classList.remove("hidden");
+      }
     });
   </script>
 
