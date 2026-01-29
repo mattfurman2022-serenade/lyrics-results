@@ -42,58 +42,55 @@
     button:hover {
       background: #5a4cd6;
     }
+
+    .box {
+      border: 1px solid #333;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
 
 <h1>🎵 Personalized Song Generator</h1>
 
-<form action="results.html" method="GET">
+<!-- ================= LOVE SONG ================= -->
+<div class="box">
+  <h2>❤️ Love Song</h2>
 
-  <label>Song Type</label>
-  <select id="songType" name="songType">
-    <option value="love" selected>Love Song</option>
-    <option value="tribute">Tribute Song</option>
-  </select>
+  <form action="results.html" method="GET">
+    <input type="hidden" name="songType" value="love">
 
-  <label>Who is the song for?</label>
-  <input type="text" name="name" required />
+    <label>Who is the song for?</label>
+    <input type="text" name="name" required>
 
-  <!-- LOVE SONG -->
-  <div id="loveFields" style="display:block;">
     <label>Special memory you share</label>
-    <textarea name="memory"></textarea>
-  </div>
+    <textarea name="memory" required></textarea>
 
-  <!-- TRIBUTE SONG -->
-  <div id="tributeFields" style="display:none;">
+    <button type="submit">Generate Love Song</button>
+  </form>
+</div>
+
+<!-- ================= TRIBUTE SONG ================= -->
+<div class="box">
+  <h2>🕊️ Tribute Song</h2>
+
+  <form action="results.html" method="GET">
+    <input type="hidden" name="songType" value="tribute">
+
+    <label>Who is this tribute for?</label>
+    <input type="text" name="name" required>
+
     <label>Your relationship to them</label>
-    <input type="text" name="relationship" />
+    <input type="text" name="relationship" required>
 
     <label>What they meant to you</label>
-    <textarea name="legacy"></textarea>
-  </div>
+    <textarea name="legacy" required></textarea>
 
-  <button type="submit">Generate Lyrics</button>
-</form>
-
-<script>
-  const songType = document.getElementById("songType");
-  const love = document.getElementById("loveFields");
-  const tribute = document.getElementById("tributeFields");
-
-  function updateFields() {
-    if (songType.value === "tribute") {
-      love.style.display = "none";
-      tribute.style.display = "block";
-    } else {
-      tribute.style.display = "none";
-      love.style.display = "block";
-    }
-  }
-
-  songType.addEventListener("change", updateFields);
-</script>
+    <button type="submit">Generate Tribute Song</button>
+  </form>
+</div>
 
 </body>
 </html>
