@@ -1,53 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Personalized Song Generator</title>
-
+  <meta charset="UTF-8">
+  <title>Choose Song Type</title>
   <style>
     body {
       background: #111;
-      color: #fff;
+      color: white;
       font-family: Arial, sans-serif;
-      max-width: 700px;
-      margin: 40px auto;
+      text-align: center;
+      padding-top: 80px;
     }
 
-    label {
+    a {
       display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    input, textarea, select, button {
-      width: 100%;
-      margin-top: 6px;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: none;
-    }
-
-    textarea {
-      height: 100px;
-    }
-
-    button {
-      margin-top: 25px;
+      margin: 30px auto;
+      width: 300px;
+      padding: 20px;
       background: #6c5ce7;
       color: white;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #5a4cd6;
-    }
-
-    .box {
-      border: 1px solid #333;
-      padding: 20px;
-      margin-top: 30px;
+      text-decoration: none;
+      font-size: 20px;
       border-radius: 10px;
+    }
+
+    a:hover {
+      background: #5a4cd6;
     }
   </style>
 </head>
@@ -55,42 +33,8 @@
 
 <h1>🎵 Personalized Song Generator</h1>
 
-<!-- ================= LOVE SONG ================= -->
-<div class="box">
-  <h2>❤️ Love Song</h2>
-
-  <form action="results.html" method="GET">
-    <input type="hidden" name="songType" value="love">
-
-    <label>Who is the song for?</label>
-    <input type="text" name="name" required>
-
-    <label>Special memory you share</label>
-    <textarea name="memory" required></textarea>
-
-    <button type="submit">Generate Love Song</button>
-  </form>
-</div>
-
-<!-- ================= TRIBUTE SONG ================= -->
-<div class="box">
-  <h2>🕊️ Tribute Song</h2>
-
-  <form action="results.html" method="GET">
-    <input type="hidden" name="songType" value="tribute">
-
-    <label>Who is this tribute for?</label>
-    <input type="text" name="name" required>
-
-    <label>Your relationship to them</label>
-    <input type="text" name="relationship" required>
-
-    <label>What they meant to you</label>
-    <textarea name="legacy" required></textarea>
-
-    <button type="submit">Generate Tribute Song</button>
-  </form>
-</div>
+<a href="love.html">❤️ Love Song</a>
+<a href="tribute.html">🕊️ Tribute Song</a>
 
 </body>
 </html>
