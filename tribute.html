@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tribute Song</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      margin-top: 25px;
+      background: #6c5ce7;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🕊️ Tribute Song</h1>
+
+<form action="results.html" method="GET">
+  <input type="hidden" name="songType" value="tribute">
+
+  <label>Who is this tribute for?</label>
+  <input name="name" required>
+
+  <label>Your relationship to them</label>
+  <input name="relationship" required>
+
+  <label>What they meant to you</label>
+  <textarea name="legacy" required></textarea>
+
+  <button type="submit">Generate Tribute Song</button>
+</form>
+
+</body>
+</html>
