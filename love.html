@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Love Song</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      margin-top: 25px;
+      background: #6c5ce7;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<h1>❤️ Love Song</h1>
+
+<form action="results.html" method="GET">
+  <input type="hidden" name="songType" value="love">
+
+  <label>Who is the song for?</label>
+  <input name="name" required>
+
+  <label>Special memory you share</label>
+  <textarea name="memory" required></textarea>
+
+  <button type="submit">Generate Love Song</button>
+</form>
+
+</body>
+</html>
